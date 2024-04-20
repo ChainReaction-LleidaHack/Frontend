@@ -1,1 +1,29 @@
-<p>game works!</p>
+<!-- game.component.html -->
+<div class="header">
+    <img src="../assets/logo_negre.png" alt="Logo de Chain Reaction">
+  </div>
+  
+  <div class="game-container">
+    <div class="target-player">
+      <div *ngIf="isEliminated; else gamePlay">
+        <h2>GAME OVER</h2>
+        <div class="image-container">
+          <img [src]="targetPlayer.image" alt="Foto del jugador objetivo" class="player-photo">
+          <div class="overlay"><i class="fa fa-times" aria-hidden="true"></i></div>
+        </div>
+      </div>
+      <ng-template #gamePlay>
+        <img [src]="targetPlayer.image" alt="Foto del jugador objetivo" class="player-photo">
+        <h2>{{ targetPlayer.name }}</h2>
+      </ng-template>
+    </div>
+  
+    <div class="game-info">
+      <p>Jugadors vius: {{ alivePlayers.length }}</p>
+    </div>
+  
+    <div *ngIf="!isEliminated" class="action-button">
+      <button mat-raised-button color="warn" (click)="reportElimination()">M'han eliminat</button>
+    </div>
+  </div>
+  

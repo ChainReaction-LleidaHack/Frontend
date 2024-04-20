@@ -1,5 +1,6 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppModule } from '../app.module';
+import { Router } from '@angular/router';
 
 // Define una interfaz para los jugadores, ajusta según tus necesidades
 interface Player {
@@ -18,7 +19,7 @@ export class LobbyComponent implements OnInit {
   isCreator: boolean = false; // Cambia este valor según la lógica de tu aplicación
   maxPlayers: number = 10; // Número máximo de jugadores permitidos
 
-  constructor(private ref: ChangeDetectorRef) {}
+  constructor(private ref: ChangeDetectorRef, private router: Router) {}
 
   ngOnInit(): void {
     // Aquí debes cargar el código de la partida y la lista de jugadores
@@ -46,6 +47,8 @@ export class LobbyComponent implements OnInit {
   startGame() {
     // Lógica para iniciar el juego
     console.log('El juego ha comenzado!');
+    this.router.navigate(['/game']);
+
     // Aquí agregarías la llamada para comenzar el juego en el servidor, etc.
   }
 }
