@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app.routes'; 
 import { FormsModule } from '@angular/forms'; 
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
 
 // Components
 import { LoginComponent } from './login/login.component';
@@ -30,6 +31,7 @@ import { MatIconModule } from '@angular/material/icon';
     AppRoutingModule,
     FormsModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     MatInputModule,
     MatButtonModule,
     MatFormFieldModule,
