@@ -14,20 +14,20 @@ export class ApiService {
     return this.http.post<any>(`${this.apiUrl}/party/create`, data);
   }
 
-  startParty(data: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/party/{code}/start/{user_id}`, data);
+  startParty(code: string, user_id:any, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/party/${code}/start/${user_id}`, data);
   }
 
-  joinParty(data: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/party/{code}/join`, data);
+  joinParty(code: string, data: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/party/${code}/join`, data);
   }
 
-  die(data: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/party/{code}/{user_id}/die`, data);
+  die(code: string, user_id: any, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/party/${code}/${user_id}/die`, data);
   }
 
-  refreshParty(): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/party/{user_id}/refresh`
+  refreshParty(user_id: any): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/party/${user_id}/refresh`
     );
   }
 }
