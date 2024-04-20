@@ -5,7 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ApiService {
+
+
+export class SessionService {
   private apiUrl = 'https://chainapi.lleidahack.dev';
 
   constructor(private http: HttpClient) { }

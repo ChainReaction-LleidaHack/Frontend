@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
   playerImage: string | ArrayBuffer | null = null;
   gameState: any;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sessionService: SessionService) {}
 
   ngOnInit() {
     this.loadGameState();
@@ -26,16 +27,47 @@ export class LoginComponent implements OnInit {
 
   startGame() {
     if (this.playerName && this.playerImage && this.gameState) {
-      // Enviar al backend el nombre, la foto y el estado de la partida
-      console.log('Nombre:', this.playerName);
-      console.log('Foto:', this.playerImage);
-      console.log('Estado del juego:', this.gameState);
-
-      // Navegar al lobby o donde sea necesario
-      this.router.navigate(['/lobby']);  // Ajusta según tu lógica de navegación
+      if (this.gameState.isCreator) {
+        this.createGame();
+      } else {
+        this.joinGame();
+      }
     } else {
-      alert('Por favor, introduce un nombre y toma una foto.');
+      alert('Siusplau, introdueix el teu nom i una foto.');
     }
+  }
+
+  createGame() {
+    debugger;
+    const data = {
+      name: this.playerName,
+      image: ""
+    };
+    this.sessionService.createParty(data).subscribe({
+      next: (response) => {
+        console.log('Party created:', response);
+        this.router.navigate(['/lobby']);  // Ajusta según tu lógica de navegación
+      },
+      error: (error) => {
+        console.error('Error creating party:', error);
+      }
+    });
+  }
+
+  joinGame() {
+    const data = {
+      name: this.playerName,
+      image: ""
+    };
+    this.sessionService.joinParty(this.gameState.partyCode, data).subscribe({
+      next: (response) => {
+        console.log('Joined party:', response);
+        this.router.navigate(['/lobby']);  // Ajusta según tu lógica de navegación
+      },
+      error: (error) => {
+        console.error('Error joining party:', error);
+      }
+    });
   }
 
   handleImage(event: Event) {
