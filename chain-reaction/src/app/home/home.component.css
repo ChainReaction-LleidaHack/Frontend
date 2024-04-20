@@ -1,0 +1,23 @@
+.header img {
+  width: 90%; /* Ajusta esto según las dimensiones deseadas para tu logo */
+  margin: 40px 20px;
+  display: block;
+  align-items: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+}
+
+.join-game, .how-to-play {
+  width: 100%;
+  max-width: 600px; /* Ajusta este valor según tus necesidades */
+  margin-top: 20px;
+}
+
+mat-form-field {
+  width: 100%;
+}

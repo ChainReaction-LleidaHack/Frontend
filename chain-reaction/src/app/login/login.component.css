@@ -1,0 +1,55 @@
+/* login.component.css */
+.header img {
+    width: 90%;
+    margin: 40px 20px 0px 20px;
+    display: block;
+    align-items: center;
+  }
+  
+  .login-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    min-height: calc(100vh - 120px); /* Ajusta según el tamaño de tu header */
+    text-align: center;
+  }
+  
+  mat-form-field {
+    width: 100%;
+    max-width: 300px;
+  }
+  
+  input[type="file"] {
+    margin: 20px 0;
+  }
+  
+  .custom-file-upload {
+    display: inline-block;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #007bff; /* Color azul para hacerlo más llamativo */
+    color: white;
+    border-radius: 5px;
+    margin-top: 20px;
+  }
+  
+  /* login.component.css */
+.player-image-preview {
+    width: 100%; /* Ajusta para que la imagen ocupe todo el ancho disponible */
+    height: auto; /* Mantiene la proporción de la imagen */
+    border-radius: 5px; /* Puedes ajustar esto para tener esquinas más suaves */
+    margin-top: 20px;
+    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
+  }
+  
+  .start-button {
+    position: fixed;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    width: calc(100% - 40px);
+    margin: 0 20px; /* Margen horizontal */
+    font-size: 18px;
+  }
+  

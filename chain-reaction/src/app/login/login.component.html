@@ -1,0 +1,28 @@
+<!-- login.component.html -->
+<div class="header">
+    <img src="../assets/logo_negre.png" alt="Logo de Chain Reaction">
+  </div>
+  
+  <div class="login-content">
+    <form (submit)="startGame()">
+      <mat-form-field appearance="fill">
+        <mat-label>Nom</mat-label>
+        <input matInput [(ngModel)]="playerName" name="playerName" required>
+      </mat-form-field>
+  
+      <!-- Botón personalizado para abrir la cámara -->
+      <label class="custom-file-upload">
+        <input type="file" (change)="handleImage($event)" accept="image/*" capture="user" hidden>
+        <i class="fa fa-camera"></i> Fes-te una foto
+      </label>
+  
+      <div *ngIf="playerImage">
+        <img [src]="playerImage" alt="Previsualización de tu foto" class="player-image-preview">
+      </div>
+  
+      <button mat-raised-button color="primary" type="submit" class="start-button">
+        Entrar
+      </button>
+    </form>
+  </div>
+  

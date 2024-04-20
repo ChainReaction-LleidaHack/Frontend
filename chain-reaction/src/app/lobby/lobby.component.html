@@ -1,0 +1,22 @@
+<div class="header">
+    <img src="../assets/logo_negre.png" alt="Logo de Chain Reaction">
+  </div>
+  
+  <div class="lobby-content">
+    <h3 class="game-code">{{ codigoPartida }}</h3>
+    <h4>Jugadors: {{ players.length }} / {{ maxPlayers }}</h4>
+    <div class="player-list">
+      <ul>
+        <li *ngFor="let player of players">
+          <img [src]="player.image" alt="Foto de usuario" class="player-image">
+          {{ player.name }}
+        </li>
+      </ul>
+    </div>
+    <div>
+      <button *ngIf="isCreator" class="start-button" mat-raised-button color="primary" (click)="startGame()">
+        Començar partida
+      </button>
+    </div>
+  </div>
+  

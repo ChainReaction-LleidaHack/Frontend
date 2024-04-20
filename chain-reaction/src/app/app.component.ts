@@ -4,9 +4,9 @@ import { RouterOutlet } from '@angular/router';
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet], // Correcto, importa las dependencias necesarias aquí
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrls: ['./app.component.css'] // Corregido de 'styleUrl' a 'styleUrls'
 })
 export class AppComponent {
   title = 'chain-reaction';
