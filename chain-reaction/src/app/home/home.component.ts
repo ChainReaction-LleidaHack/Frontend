@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  codigoPartida: string | undefined;
+  partyCode: string | undefined;
   isCreator: boolean = false;
 
   constructor(private router: Router) { }
@@ -15,19 +15,18 @@ export class HomeComponent {
   crearPartida() {
     this.isCreator = true;
     this.saveGameState();
-    // Navegar al login
     this.router.navigate(['/login']);
   }
 
   unirsePartida() {
     this.isCreator = false;
     this.saveGameState();
-    // Navegar al login
     this.router.navigate(['/login']);
   }
 
   private saveGameState() {
-    sessionStorage.setItem('gameState', JSON.stringify({
+    localStorage.setItem('gameState', JSON.stringify({
+      partyCode: this.partyCode,
       isCreator: this.isCreator
     }));
   }

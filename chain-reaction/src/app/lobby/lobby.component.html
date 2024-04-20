@@ -3,7 +3,7 @@
   </div>
   
   <div class="lobby-content">
-    <h3 class="game-code">{{ codigoPartida }}</h3>
+    <h3 class="game-code">{{ partyCode }}</h3>
     <h4>Jugadors: {{ players.length }} / {{ maxPlayers }}</h4>
     <div class="player-list">
       <ul>
@@ -14,9 +14,14 @@
       </ul>
     </div>
     <div>
-      <button *ngIf="isCreator" class="start-button" mat-raised-button color="primary" (click)="startGame()">
+      <button *ngIf="isCreator; else waitingText" class="start-button" mat-raised-button color="primary" (click)="startGame()">
         Començar partida
       </button>
+      <ng-template #waitingText>
+        <button class="start-button" mat-raised-button disabled>
+          Esperant a l'anfitrió...
+        </button>
+      </ng-template>
     </div>
   </div>
   

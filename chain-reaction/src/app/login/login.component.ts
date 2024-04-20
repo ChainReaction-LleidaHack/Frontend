@@ -41,12 +41,22 @@ export class LoginComponent implements OnInit {
     debugger;
     const data = {
       name: this.playerName,
-      image: ""
+      image: this.playerImage
     };
+    console.log('Creating party with data:', data);
     this.sessionService.createParty(data).subscribe({
       next: (response) => {
-        console.log('Party created:', response);
-        this.router.navigate(['/lobby']);  // Ajusta según tu lógica de navegación
+        const gameState = {
+          partyCode: response.party.code,
+          playerData: {
+            playerId: response.user,
+            name: data.name,
+            image: data.image
+          },
+          isCreator: true,
+        };
+        localStorage.setItem('gameState', JSON.stringify(gameState));        
+        this.router.navigate(['/lobby']); 
       },
       error: (error) => {
         console.error('Error creating party:', error);
@@ -57,12 +67,21 @@ export class LoginComponent implements OnInit {
   joinGame() {
     const data = {
       name: this.playerName,
-      image: ""
+      image: this.playerImage
     };
     this.sessionService.joinParty(this.gameState.partyCode, data).subscribe({
       next: (response) => {
-        console.log('Joined party:', response);
-        this.router.navigate(['/lobby']);  // Ajusta según tu lógica de navegación
+        const gameState = {
+          partyCode: this.gameState.partyCode,
+          playerData: {
+            playerId: response.user,
+            name: data.name,
+            image: data.image
+          },
+          isCreator: false,
+        };
+        localStorage.setItem('gameState', JSON.stringify(gameState)); 
+        this.router.navigate(['/lobby']); 
       },
       error: (error) => {
         console.error('Error joining party:', error);

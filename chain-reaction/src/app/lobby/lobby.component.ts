@@ -1,6 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { AppModule } from '../app.module';
 import { Router } from '@angular/router';
+import { SessionService } from '../services/session.service';
 
 // Define una interfaz para los jugadores, ajusta según tus necesidades
 interface Player {
@@ -14,41 +15,60 @@ interface Player {
   styleUrls: ['./lobby.component.css']
 })
 export class LobbyComponent implements OnInit {
-  codigoPartida: string = '';
+  partyCode: any = '';
   players: Player[] = [];
   isCreator: boolean = false; // Cambia este valor según la lógica de tu aplicación
   maxPlayers: number = 10; // Número máximo de jugadores permitidos
+  playerId: any;
 
-  constructor(private ref: ChangeDetectorRef, private router: Router) {}
+  constructor(private ref: ChangeDetectorRef, private router: Router, private sessionService: SessionService) {}
 
   ngOnInit(): void {
     // Aquí debes cargar el código de la partida y la lista de jugadores
     this.loadGameDetails();
+    setInterval(() => {
+      this.refreshPlayers();
+    }, 5000); 
   }
 
   loadGameDetails() {
     // Simulación de datos obtenidos, reemplazar con tu lógica de carga real
-    this.codigoPartida = 'ABC123';
-    this.players = [
-      { name: 'Jugador 1', image: '../assets/user.png' },
-      { name: 'Jugador 2', image: '../assets/user.png' },
-      { name: 'Jugador 3', image: '../assets/user.png' },
-      { name: 'Jugador 4', image: '../assets/user.png' },
-      { name: 'Jugador 5', image: '../assets/user.png' },
-      { name: 'Jugador 6', image: '../assets/user.png' }
-    ];
+    const gameState = localStorage.getItem('gameState');
+    if (gameState) {
+      const state = JSON.parse(gameState);
+      this.partyCode = state.partyCode;
+      this.isCreator = state.isCreator;
+      this.playerId = state.playerData.playerId;
+    }
 
-    // Simulación de chequeo de si el usuario actual es el creador
-    // Necesitarás reemplazar esto con tu lógica que verifique si el usuario actual es el creador de la partida
-    this.isCreator = true; // Simulación, establece esto en función de la lógica de tu aplicación
-    this.ref.detectChanges(); // Actualiza la vista
+    this.refreshPlayers();
+
+    this.ref.detectChanges(); 
   }
 
   startGame() {
-    // Lógica para iniciar el juego
-    console.log('El juego ha comenzado!');
     this.router.navigate(['/game']);
 
-    // Aquí agregarías la llamada para comenzar el juego en el servidor, etc.
+    this.sessionService.startParty(this.partyCode, this.playerId, {}).subscribe({
+      next: (response) => {
+        console.log('Game started:', response);
+      },
+      error: (error) => {
+        console.error('Error starting game:', error);
+      }
+    });
+    
+  }
+
+  refreshPlayers() {
+    this.sessionService.refreshParty(this.playerId).subscribe({
+      next: (response) => {
+        this.players = response.users;
+        this.ref.detectChanges(); 
+      },
+      error: (error) => {
+        console.error('Error al cargar los jugadores:', error);
+      }
+    });
   }
 }
