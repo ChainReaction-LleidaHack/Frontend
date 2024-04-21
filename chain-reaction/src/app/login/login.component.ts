@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   loadGameState() {
-    const state = sessionStorage.getItem('gameState');
+    const state = localStorage.getItem('gameState');
     if (state) {
       this.gameState = JSON.parse(state);
     }
@@ -38,7 +38,6 @@ export class LoginComponent implements OnInit {
   }
 
   createGame() {
-    debugger;
     const data = {
       name: this.playerName,
       image: this.playerImage
