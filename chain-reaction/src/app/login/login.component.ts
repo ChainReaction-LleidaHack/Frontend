@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
         const gameState = {
           partyCode: this.gameState.partyCode,
           playerData: {
-            playerId: response.user,
+            playerId: response.user_id,
             name: data.name,
             image: data.image
           },
