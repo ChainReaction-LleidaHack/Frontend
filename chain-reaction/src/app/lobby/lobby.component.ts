@@ -64,6 +64,9 @@ export class LobbyComponent implements OnInit {
     this.sessionService.refreshParty(this.playerId).subscribe({
       next: (response) => {
         this.players = response.users;
+        if(response.target){
+          this.router.navigate(['/game']);
+        }
         this.ref.detectChanges(); 
       },
       error: (error) => {

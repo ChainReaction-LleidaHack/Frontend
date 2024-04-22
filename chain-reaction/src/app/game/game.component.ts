@@ -26,9 +26,9 @@ export class GameComponent {
       this.partyCode = state.partyCode;
     }
     this.refreshGame();
-    // setInterval(() => {
-    //   this.refreshGame();
-    // }, 5000);
+    setInterval(() => {
+      this.refreshGame();
+    }, 5000);
   }
 
   refreshGame() {
