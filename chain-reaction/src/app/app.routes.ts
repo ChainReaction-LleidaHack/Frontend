@@ -4,9 +4,11 @@ import { HomeComponent } from './home/home.component';
 import { LobbyComponent } from './lobby/lobby.component';
 import { GameComponent } from './game/game.component';
 import { LoginComponent } from './login/login.component';
+import { SplashScreenComponent } from './splash-screen/splash-screen.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/splash', pathMatch: 'full' },
+  { path: 'splash', component: SplashScreenComponent },
   { path: 'home', component: HomeComponent },
   { path: 'lobby', component: LobbyComponent },
   { path: 'game', component: GameComponent },

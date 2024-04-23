@@ -6,7 +6,7 @@ import { SessionService } from '../services/session.service';
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.css']
+  styleUrls: ['./game.component.scss']
 })
 export class GameComponent {
   targetPlayer: any;
@@ -26,9 +26,9 @@ export class GameComponent {
       this.partyCode = state.partyCode;
     }
     this.refreshGame();
-    // setInterval(() => {
-    //   this.refreshGame();
-    // }, 5000);
+    setInterval(() => {
+      this.refreshGame();
+    }, 5000);
   }
 
   refreshGame() {
@@ -55,5 +55,9 @@ export class GameComponent {
         console.error('Error eliminating player:', error);
       }
     });
+  }
+
+  goHome() {
+    this.router.navigate(['/home']);
   }
 }

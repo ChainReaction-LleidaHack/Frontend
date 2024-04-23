@@ -1,11 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../services/session.service';
+import Pica from 'pica';
+
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
   playerName: string = '';
@@ -26,7 +28,7 @@ export class LoginComponent implements OnInit {
   }
 
   startGame() {
-    if (this.playerName && this.playerImage && this.gameState) {
+    if (this.playerName && this.gameState) {
       if (this.gameState.isCreator) {
         this.createGame();
       } else {
@@ -59,6 +61,7 @@ export class LoginComponent implements OnInit {
       },
       error: (error) => {
         console.error('Error creating party:', error);
+        alert('Error creating party');
       }
     });
   }
@@ -93,10 +96,66 @@ export class LoginComponent implements OnInit {
     let file: File | null = element.files ? element.files[0] : null;
     if (file) {
       const reader = new FileReader();
-      reader.onload = () => {
-        this.playerImage = reader.result; // Sets image as base64 encoded string
+      reader.onload = (e) => {
+        const img = new Image();
+        if (!e.target || typeof e.target.result !== 'string') {
+          console.error('Error reading image file');
+          return;
+        }
+        img.src = e.target.result as string;
+        img.onload = () => {
+          const pica = Pica();
+
+          const canvasSource = document.createElement('canvas');
+          canvasSource.width = img.width;
+          canvasSource.height = img.height;
+          const ctx = canvasSource.getContext('2d');
+          if (!ctx) {
+            console.error('Error creating canvas context');
+            return;
+          }
+          ctx.drawImage(img, 0, 0);
+
+          const canvasDest = document.createElement('canvas');
+          const maxW = 800; 
+          const maxH = 600; 
+          let width = img.width;
+          let height = img.height;
+
+          if (width > height) {
+            if (width > maxW) {
+              height *= maxW / width;
+              width = maxW;
+            }
+          } else {
+            if (height > maxH) {
+              width *= maxH / height;
+              height = maxH;
+            }
+          }
+
+          canvasDest.width = width;
+          canvasDest.height = height;
+
+          pica.resize(canvasSource, canvasDest, {
+            unsharpAmount: 80,
+            unsharpRadius: 0.6,
+            unsharpThreshold: 2
+          })
+          .then((result: any) => pica.toBlob(result, 'image/jpeg', 0.8))
+          .then((blob: Blob) => {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+              this.playerImage = reader.result;
+            };
+            reader.readAsDataURL(blob);
+          })
+          .catch((error: any) => {
+            console.error('Error processing image with Pica:', error);
+          });
+        };
       };
-      reader.readAsDataURL(file); // Read file as data URL
+      reader.readAsDataURL(file);
     }
   }
 }

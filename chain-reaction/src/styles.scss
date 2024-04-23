@@ -1,0 +1,58 @@
+@use '@angular/material' as mat;
+@use "sass:map";
+@include mat.core();
+
+// Define tus propias paletas de colores
+$primary-palette: mat.define-palette(mat.$orange-palette, 800); // Color primario como naranja
+$accent-palette: mat.define-palette(mat.$grey-palette, 300, 100, 900); // Color secundario como blanco (ajustado para uso)
+$warn-palette: mat.define-palette(mat.$red-palette); // Color de advertencia como rojo
+
+// Configura el tema general
+$app-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $primary-palette,
+      accent: $accent-palette,
+      warn: $warn-palette,
+    ),
+    foreground: (
+      base: #f7f7f7, // texto y elementos en blanco
+      divider: #f7f7f7,
+      dividers: #f7f7f7,
+      disabled: #f7f7f7,
+      disabled-button: rgba(255, 255, 255, 0.3),
+      disabled-text: rgba(255, 255, 255, 0.5),
+      hint-text: rgba(255, 255, 255, 0.5),
+      secondary-text: rgba(255, 255, 255, 0.7),
+      icon: rgba(255, 255, 255, 0.7),
+      icons: rgba(255, 255, 255, 0.7),
+      text: #f7f7f7,
+      slider-min: #f7f7f7,
+      slider-off: rgba(255, 255, 255, 0.5),
+      slider-off-active: #f7f7f7
+    ),
+    typography: mat.define-typography-config(
+      $font-family: 'Space Mono', 
+    )
+
+    
+    
+  )
+);
+
+
+// Incluye todos los estilos del tema para componentes de Angular Material
+@include mat.all-component-themes($app-theme);
+
+* {
+  font-family: 'Space Mono';
+}
+
+body {
+  background-color: #0f0f0f; 
+  color: #f7f7f7; 
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  width: 100%;
+}

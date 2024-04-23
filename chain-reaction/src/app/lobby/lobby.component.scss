@@ -26,13 +26,16 @@
     overflow-y: auto; /* Habilita el desplazamiento vertical */
     flex-grow: 1; /* Toma todo el espacio disponible, pero deja espacio para otros elementos */
     margin-bottom: 20px; /* Espacio antes del botón */
+    color: #000               ; /* Color del texto */
+    font-weight: bold;
+    font-size: 16px;
   }
   
   .player-list ul {
     list-style: none;
     padding: 0;
     margin: 0;
-    background-color: #f0f0f0;
+    background-color: #251f1f;
   }
   
   .player-list li {
