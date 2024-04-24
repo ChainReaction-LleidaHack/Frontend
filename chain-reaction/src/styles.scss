@@ -32,7 +32,7 @@ $app-theme: mat.define-light-theme(
       slider-off-active: #f7f7f7
     ),
     typography: mat.define-typography-config(
-      $font-family: 'Space Mono', 
+      $font-family: 'Space Mono' !important, 
     )
 
     
@@ -45,7 +45,7 @@ $app-theme: mat.define-light-theme(
 @include mat.all-component-themes($app-theme);
 
 * {
-  font-family: 'Space Mono';
+  font-family: 'Space Mono' !important;
 }
 
 body {

@@ -5,6 +5,7 @@ import { LobbyComponent } from './lobby/lobby.component';
 import { GameComponent } from './game/game.component';
 import { LoginComponent } from './login/login.component';
 import { SplashScreenComponent } from './splash-screen/splash-screen.component';
+import { InstructionsComponent } from './instructions/instructions.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: '/splash', pathMatch: 'full' },
@@ -12,7 +13,8 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'lobby', component: LobbyComponent },
   { path: 'game', component: GameComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'instructions', component: InstructionsComponent },
 ];
 
 @NgModule({

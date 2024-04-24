@@ -1,8 +1,13 @@
+.header {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente los contenidos */
+  align-items: center; /* Centra verticalmente los contenidos (si es necesario) */
+}
+
 .header img {
-  width: 90%; /* Ajusta esto según las dimensiones deseadas para tu logo */
-  margin: 40px 20px;
-  display: block;
-  align-items: center;
+  width: 60%;
+  max-width: 600px;
+  margin: 40px 0; /* Solo margen vertical */
 }
 
 .content {
@@ -10,6 +15,7 @@
   flex-direction: column;
   align-items: center;
   padding: 30px;
+  max-width: 600px;
 }
 
 .join-game, .how-to-play {
@@ -21,4 +27,3 @@
 mat-form-field {
   width: 100%;
 }
-

@@ -1,0 +1,24 @@
+<div class="instructions-container">
+
+    <mat-card *ngFor="let instruction of instructions; let i = index" [class.active]="currentIndex === i">
+      <mat-card-header>
+        <mat-card-title>{{ instruction.title }}</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image [src]="instruction.image" alt="Image of instruction step" class="centered-image">
+      <mat-card-content>
+        <p>{{ instruction.text }}</p>
+      </mat-card-content>
+    </mat-card>
+  
+    <button mat-icon-button (click)="navigate('prev')" [disabled]="currentIndex === 0" class="nav-button left">
+      <mat-icon>arrow_back</mat-icon>
+    </button>
+  
+    <button mat-icon-button (click)="navigate('next')" [disabled]="currentIndex === instructions.length - 1" class="nav-button right">
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  
+    <button mat-raised-button color="primary" (click)="goHome()" class="home-button">Tornar a l'inici</button>
+  
+  </div>
+  

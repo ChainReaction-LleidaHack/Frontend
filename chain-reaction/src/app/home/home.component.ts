@@ -27,7 +27,11 @@ export class HomeComponent {
   private saveGameState() {
     localStorage.setItem('gameState', JSON.stringify({
       partyCode: this.partyCode,
-      isCreator: this.isCreator
+      isCreator: this.isCreator,
     }));
+  }
+
+  instructions() {
+    this.router.navigate(['/instructions']);
   }
 }

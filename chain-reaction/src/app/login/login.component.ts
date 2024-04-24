@@ -28,14 +28,14 @@ export class LoginComponent implements OnInit {
   }
 
   startGame() {
-    if (this.playerName && this.gameState) {
+    if (this.playerName && this.playerImage && this.gameState) {
       if (this.gameState.isCreator) {
         this.createGame();
       } else {
         this.joinGame();
       }
     } else {
-      alert('Siusplau, introdueix el teu nom i una foto.');
+      alert('Siusplau, introdueix el teu nom i una foto');
     }
   }
 
@@ -55,13 +55,13 @@ export class LoginComponent implements OnInit {
             image: data.image
           },
           isCreator: true,
+          isEliminated: false,
         };
         localStorage.setItem('gameState', JSON.stringify(gameState));        
         this.router.navigate(['/lobby']); 
       },
       error: (error) => {
         console.error('Error creating party:', error);
-        alert('Error creating party');
       }
     });
   }
@@ -78,9 +78,10 @@ export class LoginComponent implements OnInit {
           playerData: {
             playerId: response.user_id,
             name: data.name,
-            image: data.image
+            image: data.image,
           },
           isCreator: false,
+          isEliminated: false
         };
         localStorage.setItem('gameState', JSON.stringify(gameState)); 
         this.router.navigate(['/lobby']); 

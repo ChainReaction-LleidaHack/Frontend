@@ -6,31 +6,36 @@
   <div class="game-container">
     <div class="target-player">
       <div *ngIf="isEliminated; else gamePlay">
-        <h2 class = 'game-over'>GAME OVER</h2>
         <div class="image-container">
           <img [src]="targetPlayer.image" alt="Foto del jugador objetivo" class="player-photo">
           <div class="overlay"><i class="fa fa-times" aria-hidden="true"></i></div>
-          
         </div>
       </div>
       <ng-template #gamePlay>
-        <img [src]="targetPlayer.image" alt="Foto del jugador objetivo" class="player-photo">
-        <h2>{{ targetPlayer.name }}</h2>
+        <div *ngIf="targetPlayer?.image; else loading">
+          <img [src]="targetPlayer.image" alt="Foto del jugador objetivo" class="player-photo">
+          <h2>{{ targetPlayer.name }}</h2>
+        </div>
+        <ng-template #loading>
+          <mat-spinner diameter="50"></mat-spinner>
+        </ng-template>
       </ng-template>
     </div>
+  
   
     <div class="game-info">
       <p>Jugadors vius: {{ remainingPlayers }}</p>
     </div>
-  
+
     <div *ngIf="!isEliminated; else returnHome" class="action-button">
       <button mat-raised-button color="warn" (click)="reportElimination()">M'han eliminat</button>
     </div>
     <ng-template #returnHome>
-      <div>
-        <button mat-raised-button color="primary" (click)="goHome()">Tornar a la pàgina principal</button>
+      <div class="action-button">
+        <button mat-raised-button color="primary" (click)="goHome()">Abandonar partida</button>
       </div>
     </ng-template>
+    
 
     
   </div>

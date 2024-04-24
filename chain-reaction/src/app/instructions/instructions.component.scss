@@ -1,0 +1,57 @@
+.instructions-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; // Asegura que la vista ocupa toda la altura de la pantalla
+    overflow: hidden; // Esconde cualquier contenido que exceda el tamaño del contenedor
+  
+    mat-card {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      display: none; // Oculta todas las tarjetas inicialmente
+      background-color: #070707; // Fondo negro para las tarjetas
+      color: white; // Texto blanco para mejor contraste
+      text-align: center; // Centra el texto
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+  
+      &.active {
+        display: flex; // Muestra la tarjeta activa
+      }
+    }
+  
+    .centered-image {
+      max-width: 80%; // Limita el tamaño máximo de la imagen
+      height: auto; // Mantiene la proporción de la imagen
+      margin: 20px 0; // Espacio arriba y abajo de la imagen
+    }
+  
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100; // Asegura que los botones están sobre las tarjetas
+      color: orange; // Color naranja para las flechas
+  
+      &.left {
+        left: 10px;
+      }
+  
+      &.right {
+        right: 10px;
+      }
+    }
+  
+    .home-button {
+      position: absolute;
+      bottom: 20px; // Posiciona el botón en la parte inferior
+      left: 50%;
+      transform: translateX(-50%); // Centra el botón horizontalmente
+      z-index: 100; // Asegura que el botón está sobre las tarjetas
+    }
+  }
+  

@@ -16,16 +16,16 @@ export class SessionService {
     return this.http.post<any>(`${this.apiUrl}/party/create`, data);
   }
 
-  startParty(code: string, user_id:any, data: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/party/${code}/start/${user_id}`, data);
+  startParty(user_id:any, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/party/start/${user_id}`, data);
   }
 
   joinParty(code: string, data: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/party/${code}/join`, data);
   }
 
-  die(code: string, user_id: any, data: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/party/${code}/${user_id}/die`, data);
+  die(user_id: any, data: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/party/${user_id}/die`, data);
   }
 
   refreshParty(user_id: any): Observable<any> {

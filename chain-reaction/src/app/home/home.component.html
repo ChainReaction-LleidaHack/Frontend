@@ -1,28 +1,27 @@
 <div class="header">
-    <img src="..\assets\logo_blanc.png" alt="Logo de Chain Reaction">
+    <img src="..\assets\chain_blanc.png" alt="Logo de Chain Reaction">
   </div>
   
   <div class="content">
-    <button mat-raised-button color="primary" (click)="crearPartida()" style="width: 100%;">
+    <button mat-raised-button color="primary" (click)="crearPartida()">
       Crear partida
     </button>
   
     <div class="join-game">
       <h2>Unir-se a partida</h2>
-      <mat-form-field appearance="fill" style="width: 100%;">
+      <mat-form-field appearance="fill">
         <mat-label>Codi partida</mat-label>
-        <input matInput [(ngModel)]="partyCode">
+        <input matInput [(ngModel)]="partyCode" (ngModelChange)="partyCode = $event.toUpperCase()" name="partyCode" required>
       </mat-form-field>
-      <button mat-raised-button color="primary" (click)="unirsePartida()" style="width: 100%;">
+      <button mat-raised-button color="primary" (click)="unirsePartida()">
         Unir-se
       </button>
     </div>
   
     <div class="how-to-play">
-      <h2 class="mat-display-1">Com jugar</h2>
-      <p>
-        Aquí puedes explicar cómo se juega tu juego. Detalla las reglas básicas y cualquier otra información relevante que ayude a los nuevos jugadores a empezar.
-      </p>
+      <button mat-raised-button color="primary" (click)="instructions()">
+        Com jugar?
+      </button>
     </div>
   </div>
   

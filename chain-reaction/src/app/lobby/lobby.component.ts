@@ -47,9 +47,7 @@ export class LobbyComponent implements OnInit {
   }
 
   startGame() {
-    this.router.navigate(['/game']);
-
-    this.sessionService.startParty(this.partyCode, this.playerId, {}).subscribe({
+    this.sessionService.startParty(this.playerId, {}).subscribe({
       next: (response) => {
         console.log('Game started:', response);
       },
@@ -57,14 +55,20 @@ export class LobbyComponent implements OnInit {
         console.error('Error starting game:', error);
       }
     });
+    this.router.navigate(['/game']);
     
   }
 
   refreshPlayers() {
     this.sessionService.refreshParty(this.playerId).subscribe({
       next: (response) => {
-        this.players = response.users;
-        this.ref.detectChanges(); 
+        if(response.users) {
+          this.players = response.users;
+          this.ref.detectChanges(); 
+        
+        } else {
+          this.router.navigate(['/game']);
+        }
       },
       error: (error) => {
         console.error('Error al cargar los jugadores:', error);

@@ -3,14 +3,17 @@
     margin: 40px 20px 0px 20px; /* Ajusta esto según la posición deseada */
     display: block;
     align-items: center;
+    flex-shrink: 0; /* No permite que el encabezado se reduzca */
+  
   }
   
   .lobby-content {
     display: flex;
     flex-direction: column;
-    height: calc(100vh - 240px); /* Ajusta según la altura de tu header y otros elementos */
+    height: 100vh; /* Ajusta según la altura de tu header y otros elementos */
     padding: 30px;
     text-align: center; 
+    box-sizing: border-box; /* Incluye el padding en la altura */
   }
   
   .game-code {
@@ -20,6 +23,7 @@
     width: 90%;
     margin: 0 auto;
     margin-bottom: 20px;
+    flex-shrink: 0; /* Asegura que estos elementos no se reduzcan */
   }
   
   .player-list {
@@ -29,6 +33,7 @@
     color: #000               ; /* Color del texto */
     font-weight: bold;
     font-size: 16px;
+    max-height: calc(100vh - 400px); /* Ajusta este valor basado en la altura del header y del footer */
   }
   
   .player-list ul {
@@ -36,6 +41,9 @@
     padding: 0;
     margin: 0;
     background-color: #251f1f;
+    overflow-y: auto; /* Habilita el desplazamiento vertical */
+    flex-grow: 1; /* Permite que tome el espacio vertical restante */
+    margin-bottom: 20px; /* Espacio antes del botón */
   }
   
   .player-list li {
@@ -57,6 +65,7 @@
   
   .start-button-container {
     width: 100%;
+    flex-shrink: 0; /* Asegura que estos elementos no se reduzcan */
   }
   .start-button {
     position: fixed;
