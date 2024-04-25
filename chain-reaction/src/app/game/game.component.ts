@@ -2,11 +2,14 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../services/session.service';
+import { NgIf } from '@angular/common';
+
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
-  styleUrls: ['./game.component.scss']
+  styleUrls: ['./game.component.scss'],
+  imports: [NgIf]
 })
 export class GameComponent {
   targetPlayer: any;
@@ -57,6 +60,7 @@ export class GameComponent {
           this.playerData = response.winner;
           this.targetPlayer = response.winner;
           this.winnerKills = response.winner.num_killed;
+          clearInterval(this.refreshInterval); // Detiene el intervalo
         } else {
           if(!this.isEliminated) {
             this.targetPlayer = response.target;
