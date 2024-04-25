@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { SessionService } from '../services/session.service';
 
 @Component({
   selector: 'app-home',
@@ -7,10 +8,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  partyCode: string | undefined;
+  partyCode: string = '';
   isCreator: boolean = false;
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private sessionService: SessionService) { }
 
   crearPartida() {
     this.isCreator = true;
@@ -19,9 +20,21 @@ export class HomeComponent {
   }
 
   unirsePartida() {
-    this.isCreator = false;
     this.saveGameState();
-    this.router.navigate(['/login']);
+    this.sessionService.exist(this.partyCode).subscribe({
+      next: (response) => {
+        if (response) {
+          this.isCreator = false;
+          this.router.navigate(['/login']);
+        } else {
+          alert('Aquest codi de partida no existeix');
+        }
+      },
+      error: (error) => {
+        console.error('Error checking party:', error);
+      }
+    });
+    
   }
 
   private saveGameState() {

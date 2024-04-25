@@ -1,28 +1,53 @@
-<!-- login.component.html -->
+<!-- Appbar como encabezado -->
 <div class="header">
-    <img src="../assets/logo_blanc.png" alt="Logo de Chain Reaction">
+  <div class="logo-container">
+      <!-- If isCreator que ponga crear partida, sinó que ponga unirse partida -->
+      <h1 *ngIf="isCreator; else joinGame" class="title">Crear partida</h1>
+
+      <ng-template #joinGame>
+        <h1 class="title">Unir-se a partida</h1>
+      </ng-template>
   </div>
-  
-  <div class="login-content">
-    <form (submit)="startGame()">
-      <mat-form-field appearance="fill">
-        <mat-label>Nom</mat-label>
-        <input matInput [(ngModel)]="playerName" name="playerName" required>
-      </mat-form-field>
-  
-      <!-- Botón personalizado para abrir la cámara -->
-      <label class="custom-file-upload">
-        <input type="file" (change)="handleImage($event)" accept="image/*" capture="enviroment" hidden>
-        <i class="fa fa-camera"></i> Fes-te una foto
-      </label>
-  
-      <div *ngIf="playerImage">
-        <img [src]="playerImage" alt="Previsualización de tu foto" class="player-image-preview">
+</div>
+
+<div class="content"> <!-- Usando la clase 'content' para mantener consistencia -->
+  <form (submit)="startGame()" class="login-form">
+    <!-- Header del campo -->
+    <div class="mat-card-button">
+      <mat-card>
+        <mat-card-content>
+          <div class="header-content">
+            <h2>Introdueix el teu nom</h2>
+          </div>
+          <mat-form-field appearance="fill">
+            <mat-label>Nom</mat-label>
+            <input matInput [(ngModel)]="playerName" name="playerName" required>
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
+    </div>
+
+    <!-- Botón personalizado para subir foto, ajustado al estilo de los botones de la página de inicio -->
+    <label class="custom-file-upload">
+      <input type="file" (change)="handleImage($event)" accept="image/*" capture="environment" hidden>
+      <div class="camera-icon">
+        <img src="..\assets\icons\camera.svg" alt="Unirse" class="custom-icon">
       </div>
-  
-      <button mat-raised-button color="primary" type="submit" class="start-button">
-        Entrar
-      </button>
-    </form>
-  </div>
-  
+    </label>
+    
+    <div *ngIf="playerImage">
+      <img [src]="playerImage" alt="Previsualización de tu foto" class="player-image-preview">
+    </div>
+    
+
+    <button type="submit" class="mat-card-button submit-button">
+      <mat-card>
+        <mat-card-content>
+          <div class="header-content">
+            <h2>Entrar</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </button>
+  </form>
+</div>

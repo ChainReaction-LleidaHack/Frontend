@@ -6,6 +6,24 @@
   align-items: center;
 }
 
+
+.header {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin-top: 32px; /* Elimina cualquier margen predeterminado */
+  padding: 0; /* Elimina cualquier padding predeterminado */
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0; /* Elimina márgenes predeterminados para un ajuste fino */
+  padding: 0; /* Elimina paddings para un control total */
+  line-height: 1.2; /* Controla el espaciado entre 'Chain' y 'Reaction' */
+  font-size: 2rem; /* Tamaño del texto, ajustable según necesidades */
+  font-weight: bold;
+}
+
 .game-container {
   display: flex;
   flex-direction: column;
@@ -14,15 +32,6 @@
   align-items: center;
 }
 
-.target-player .image-container {
-  position: relative;
-  display: inline-block;
-}
-
-.target-player img.player-photo {
-  width: 100%;
-  height: auto;
-}
 
 .overlay {
   position: absolute;
@@ -30,7 +39,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(255, 0, 0, 0.5);
+  background: rgba(78, 78, 78, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,13 +53,28 @@
   text-align: center;
 }
 
-.game-info p {
-  font-size: 24px;
+
+.players-info{
+  font-size: 20px;
   text-align: center;
   position: fixed;
-  bottom: 60px;
+  bottom: 120px;
+  color:#ff7430;
   left: 0;
   right: 0;
+}
+
+.game-info p {
+  font-size: 23px;
+  text-align: center;
+  position: fixed;
+  bottom: 155px;
+  left: 0;
+  right: 0;
+}
+
+.bw-filter {
+  filter: grayscale(100%); /* Convierte la imagen completamente a blanco y negro */
 }
 
 .action-button button {
@@ -77,3 +101,63 @@
   justify-content: center;
   align-items: center;
 }
+
+
+.target-player .image-container {
+  display: flex;
+  justify-content: center;  /* Centra horizontalmente el contenido dentro del contenedor */
+  align-items: center;      /* Centra verticalmente */
+  width: 100%;              /* Asegúrate de que el contenedor ocupe el ancho deseado */
+}
+
+.target-player img.player-photo {
+  width: 300px;              /* Ancho fijo para la foto */
+  height: auto;             /* Altura automática para mantener la proporción */
+  object-fit: cover;        /* Asegura que la imagen cubra completamente el espacio sin distorsionar */
+  max-width: 100%;          /* Previene que la imagen exceda el ancho del contenedor */
+}
+
+
+
+
+.mat-card-button {
+  width: 100%; /* Ocupa todo el ancho posible */
+  border: none; /* Sin bordes para que parezca una tarjeta, no un botón */
+  background: none; /* Fondo transparente */
+  padding: 0; /* Sin padding adicional */
+  display: block; /* Hace que el botón sea un bloque, similar a una tarjeta */
+  text-align: left; /* Alinea el texto a la izquierda para estética de tarjeta */
+  cursor: pointer; /* Cambia el cursor para indicar que es clickable */
+}
+
+mat-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
+  //color
+  background: #1a1a1a;
+  //borde de color gris
+  border: 2px solid #ff7430;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px; /* Ajusta este valor según tus necesidades */
+  margin-top: 20px;
+}
+
+.submit-button {
+  position: fixed;
+  bottom: 40px;
+  width: 85%;
+}
+
+h2 {
+  margin: 0; /* Elimina el margen predeterminado para alinear mejor */
+  flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+  color: #f7f7f7;
+}
+
+
+.waiting{
+  opacity: 0.5; /* Reduce la opacidad para dar una apariencia "apagada" */
+  box-shadow: none; /* Elimina cualquier sombra para aplanar el botón */
+  cursor: not-allowed; /* Cambia el cursor para indicar que el botón no es interactivo */
+}
+

@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   playerImage: string | ArrayBuffer | null = null;
   gameState: any;
 
+  isCreator: boolean = false;
+
   constructor(private router: Router, private sessionService: SessionService) {}
 
   ngOnInit() {
@@ -24,6 +26,7 @@ export class LoginComponent implements OnInit {
     const state = localStorage.getItem('gameState');
     if (state) {
       this.gameState = JSON.parse(state);
+      this.isCreator = this.gameState.isCreator;
     }
   }
 

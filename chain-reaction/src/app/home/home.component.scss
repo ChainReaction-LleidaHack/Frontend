@@ -1,25 +1,50 @@
 .header {
   display: flex;
-  justify-content: center; /* Centra horizontalmente los contenidos */
-  align-items: center; /* Centra verticalmente los contenidos (si es necesario) */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin-top: 32px; /* Elimina cualquier margen predeterminado */
+  padding: 0; /* Elimina cualquier padding predeterminado */
+  margin-bottom: 64px;
 }
 
-.header img {
-  width: 60%;
-  max-width: 600px;
-  margin: 40px 0; /* Solo margen vertical */
+.logo-container {
+  display: flex; /* Mantiene los elementos en línea horizontal */
+  align-items: center; /* Alinea los elementos en el centro verticalmente */
 }
 
-.content {
+.logo {
+  width: 120px; /* Tamaño del logo, ajustable según necesidades */
+  height: auto; /* Mantiene la proporción del logo */
+  margin-right: 8px; /* Espacio entre el logo y el texto */
+}
+
+.title-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 30px;
-  max-width: 600px;
+  flex-direction: column; /* Coloca los textos uno sobre otro */
 }
 
-.join-game, .how-to-play {
-  width: 100%;
+h1 {
+  margin: 0; /* Elimina márgenes predeterminados para un ajuste fino */
+  padding: 0; /* Elimina paddings para un control total */
+  line-height: 1.2; /* Controla el espaciado entre 'Chain' y 'Reaction' */
+  font-size: 2.5rem; /* Tamaño del texto, ajustable según necesidades */
+  font-weight: bold;
+}
+
+.how-to-play {
+  width: 90%;
+  max-width: 600px; /* Ajusta este valor según tus necesidades */
+  margin-top: 20px;
+}
+.join-game {
+  width: 90%;
+  max-width: 600px; /* Ajusta este valor según tus necesidades */
+  margin-top: 20px;
+  margin-bottom: 48px;
+}
+
+.create-game {
+  width: 90%;
   max-width: 600px; /* Ajusta este valor según tus necesidades */
   margin-top: 20px;
 }
@@ -27,3 +52,71 @@
 mat-form-field {
   width: 100%;
 }
+
+mat-icon {
+  margin-right: 8px; /* Espacio entre el icono y el texto del botón */
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  max-width: 800px; /* Ajusta según el ancho deseado */
+  margin: auto; /* Centra el contenido horizontalmente */
+  width: 85%;
+}
+
+
+.header-content {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el texto y el botón */
+  gap: 10px; /* Espacio entre el texto y el botón */
+  margin-bottom: 15px;
+}
+
+h2 {
+  margin: 0; /* Elimina el margen predeterminado para alinear mejor */
+  flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+  color: #f7f7f7;
+  margin-left: 8px;
+}
+
+button[mat-icon-button] {
+  border: none; /* Elimina el borde del botón para un look más limpio */
+  background: transparent; /* Fondo transparente para que solo se vea el PNG */
+}
+
+
+.mat-card-button {
+  width: 100%; /* Ocupa todo el ancho posible */
+  border: none; /* Sin bordes para que parezca una tarjeta, no un botón */
+  background: none; /* Fondo transparente */
+  padding: 0; /* Sin padding adicional */
+  display: block; /* Hace que el botón sea un bloque, similar a una tarjeta */
+  text-align: left; /* Alinea el texto a la izquierda para estética de tarjeta */
+  cursor: pointer; /* Cambia el cursor para indicar que es clickable */
+}
+
+.mat-card-button:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra para efecto al pasar el mouse */
+}
+
+.custom-icon {
+  width: 40x; /* Tamaño del ícono */
+  height: 40px; /* Tamaño del ícono */
+  fill: #f7f7f7;
+  filter: brightness(0) invert(1);
+
+}
+
+
+mat-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
+  //color
+  background: #1a1a1a;
+  //borde de color gris
+  border: 2px solid #ff7430;
+}
+

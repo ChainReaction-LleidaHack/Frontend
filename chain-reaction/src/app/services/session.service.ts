@@ -29,7 +29,10 @@ export class SessionService {
   }
 
   refreshParty(user_id: any): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/party/${user_id}/refresh`
-    );
+    return this.http.get<any>(`${this.apiUrl}/party/${user_id}/refresh`);
+  }
+
+  exist(code: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/party/${code}/exist`);
   }
 }
