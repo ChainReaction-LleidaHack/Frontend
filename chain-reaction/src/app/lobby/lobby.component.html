@@ -1,10 +1,12 @@
 <div class="header">
-    <img src="../assets/logo_blanc.png" alt="Logo de Chain Reaction">
+  <div class="logo-container">
+      <!-- If isCreator que ponga crear partida, sinó que ponga unirse partida -->
+      <h1> Sala d'espera</h1>
   </div>
-  
+</div>
   <div class="lobby-content">
     <h3 class="game-code">{{ partyCode }}</h3>
-    <h4>Jugadors: {{ players.length }} / {{ maxPlayers }}</h4>
+    <h4>Jugadors: {{ players.length }}</h4>
     <div class="player-list">
       <ul>
         <li *ngFor="let player of players">
@@ -13,15 +15,26 @@
         </li>
       </ul>
     </div>
-    <div>
-      <button *ngIf="isCreator; else waitingText" class="start-button" mat-raised-button color="primary" (click)="startGame()">
-        Començar partida
+
+    <button *ngIf="isCreator; else waitingText" (click)="startGame()" class="mat-card-button submit-button">
+      <mat-card>
+        <mat-card-content>
+          <div class="header-content">
+            <h2>Començar partida</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </button>
+    <ng-template #waitingText>
+      <button class="mat-card-button submit-button waiting" >
+        <mat-card>
+          <mat-card-content>
+            <div class="header-content">
+              <h2>Esperant a l'anfitrió</h2>
+            </div>
+          </mat-card-content>
+        </mat-card>
       </button>
-      <ng-template #waitingText>
-        <button class="start-button" mat-raised-button disabled>
-          Esperant a l'anfitrió...
-        </button>
-      </ng-template>
-    </div>
+    </ng-template>
   </div>
   

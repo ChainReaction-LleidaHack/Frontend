@@ -1,55 +1,113 @@
-/* login.component.css */
-.header img {
-    width: 90%;
-    margin: 40px 20px 0px 20px;
-    display: block;
-    align-items: center;
-  }
-  
-  .login-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 20px;
-    min-height: calc(100vh - 120px); /* Ajusta según el tamaño de tu header */
-    text-align: center;
-  }
-  
-  mat-form-field {
-    width: 100%;
-    max-width: 300px;
-  }
-  
-  input[type="file"] {
-    margin: 20px 0;
-  }
-  
-  .custom-file-upload {
-    display: inline-block;
-    padding: 10px 20px;
-    cursor: pointer;
-    background-color: #EF6C00; /* Color azul para hacerlo más llamativo */
-    color: white;
-    border-radius: 5px;
-    margin-top: 20px;
-  }
-  
-  /* login.component.css */
+.header {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin-top: 32px; /* Elimina cualquier margen predeterminado */
+  padding: 0; /* Elimina cualquier padding predeterminado */
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0; /* Elimina márgenes predeterminados para un ajuste fino */
+  padding: 0; /* Elimina paddings para un control total */
+  line-height: 1.2; /* Controla el espaciado entre 'Chain' y 'Reaction' */
+  font-size: 2rem; /* Tamaño del texto, ajustable según necesidades */
+  font-weight: bold;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  width: 90%;
+  margin: auto;
+}
+
+.login-form {
+  width: 90%;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.custom-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+
+
 .player-image-preview {
-    width: 100%; /* Ajusta para que la imagen ocupe todo el ancho disponible */
-    height: auto; /* Mantiene la proporción de la imagen */
-    border-radius: 5px; /* Puedes ajustar esto para tener esquinas más suaves */
-    margin-top: 20px;
-    object-fit: cover; /* Asegura que la imagen cubra el área sin deformarse */
-  }
-  
-  .start-button {
-    position: fixed;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    width: calc(100% - 40px);
-    margin: 0 20px; /* Margen horizontal */
-    font-size: 18px;
-  }
-  
+  width: 100%; /* Ajustar según necesidades */
+  margin-top: 20px;
+}
+
+.mat-card-button {
+  width: 100%; /* Ocupa todo el ancho posible */
+  border: none; /* Sin bordes para que parezca una tarjeta, no un botón */
+  background: none; /* Fondo transparente */
+  padding: 0; /* Sin padding adicional */
+  display: block; /* Hace que el botón sea un bloque, similar a una tarjeta */
+  text-align: left; /* Alinea el texto a la izquierda para estética de tarjeta */
+  cursor: pointer; /* Cambia el cursor para indicar que es clickable */
+}
+
+mat-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
+  //color
+  background: #1a1a1a;
+  //borde de color gris
+  border: 2px solid #ff7430;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px; /* Ajusta este valor según tus necesidades */
+  margin-top: 20px;
+}
+
+.submit-button {
+  position: fixed;
+  bottom: 40px;
+  width: 80%;
+}
+h2 {
+  margin: 0; /* Elimina el margen predeterminado para alinear mejor */
+  flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+  color: #f7f7f7;
+  margin-left: 8px;
+}
+
+.custom-file-upload {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.camera-icon {
+  width: 60px;  /* Tamaño del círculo */
+  height: 60px;  /* Tamaño del círculo */
+  border-radius: 50%;  /* Hace el círculo perfecto */
+  display: flex;
+  border: 2px solid #ff7430;  /* Borde blanco */
+  justify-content: center;  /* Centra horizontalmente el ícono */
+  align-items: center;  /* Centra verticalmente el ícono */
+  color: black;  /* Color del ícono */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);  /* Sombra para dar profundidad */
+  transition: background-color 0.3s ease;  /* Transición suave al cambiar el color */
+  margin-top: 32px;
+}
+
+
+.custom-icon {
+  filter: brightness(0) invert(1);
+  width: 40px;
+}
+
+
+.player-image-preview {
+  width: 100%;  /* Ajustar según necesidades */
+  margin-top: 20px;
+}

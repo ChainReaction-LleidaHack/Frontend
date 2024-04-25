@@ -47,15 +47,20 @@ export class LobbyComponent implements OnInit {
   }
 
   startGame() {
-    this.sessionService.startParty(this.playerId, {}).subscribe({
-      next: (response) => {
-        console.log('Game started:', response);
-      },
-      error: (error) => {
-        console.error('Error starting game:', error);
-      }
-    });
-    this.router.navigate(['/game']);
+
+    if(this.players.length >= 3) {
+      this.sessionService.startParty(this.playerId, {}).subscribe({
+        next: (response) => {
+          console.log('Game started:', response);
+        },
+        error: (error) => {
+          console.error('Error starting game:', error);
+        }
+      });
+      this.router.navigate(['/game']);
+    } else {
+      alert('Es necessiten mínim 3 jugador per començar la partida!');
+    }
     
   }
 

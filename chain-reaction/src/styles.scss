@@ -2,41 +2,73 @@
 @use "sass:map";
 @include mat.core();
 
+$custom-orange: (
+  50: #ffe6d4,
+  100: #ffbf9a,
+  200: #ff995f,
+  300: #ff7324,
+  400: #ff5c00,
+  500: #FF7430, // Color personalizado principal
+  600: #cc4700,
+  700: #b33d00,
+  800: #993300,
+  900: #802900,
+  A100: #ffbf9a,
+  A200: #ff995f,
+  A400: #ff5c00,
+  A700: #b33d00,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #ffffff,
+    A700: #ffffff,
+  )
+);
+
+
+
 // Define tus propias paletas de colores
-$primary-palette: mat.define-palette(mat.$orange-palette, 800); // Color primario como naranja
+$primary-palette: mat.define-palette($custom-orange, 500); // Color primario como naranja
 $accent-palette: mat.define-palette(mat.$grey-palette, 300, 100, 900); // Color secundario como blanco (ajustado para uso)
 $warn-palette: mat.define-palette(mat.$red-palette); // Color de advertencia como rojo
 
 // Configura el tema general
-$app-theme: mat.define-light-theme(
+$app-theme: mat.define-dark-theme(
   (
     color: (
       primary: $primary-palette,
       accent: $accent-palette,
       warn: $warn-palette,
     ),
-    foreground: (
-      base: #f7f7f7, // texto y elementos en blanco
-      divider: #f7f7f7,
-      dividers: #f7f7f7,
-      disabled: #f7f7f7,
-      disabled-button: rgba(255, 255, 255, 0.3),
-      disabled-text: rgba(255, 255, 255, 0.5),
-      hint-text: rgba(255, 255, 255, 0.5),
-      secondary-text: rgba(255, 255, 255, 0.7),
-      icon: rgba(255, 255, 255, 0.7),
-      icons: rgba(255, 255, 255, 0.7),
-      text: #f7f7f7,
-      slider-min: #f7f7f7,
-      slider-off: rgba(255, 255, 255, 0.5),
-      slider-off-active: #f7f7f7
-    ),
+    // foreground: (
+    //   base: #f7f7f7, // texto y elementos en blanco
+    //   divider: #f7f7f7,
+    //   dividers: #f7f7f7,
+    //   disabled: #f7f7f7,
+    //   disabled-button: rgba(255, 255, 255, 0.3),
+    //   disabled-text: rgba(255, 255, 255, 0.5),
+    //   hint-text: rgba(255, 255, 255, 0.5),
+    //   secondary-text: rgba(255, 255, 255, 0.7),
+    //   icon: rgba(255, 255, 255, 0.7),
+    //   icons: rgba(255, 255, 255, 0.7),
+    //   text: #f7f7f7,
+    //   slider-min: #f7f7f7,
+    //   slider-off: rgba(255, 255, 255, 0.5),
+    //   slider-off-active: #f7f7f7
+    // ),
     typography: mat.define-typography-config(
       $font-family: 'Space Mono' !important, 
     )
-
-    
-    
   )
 );
 

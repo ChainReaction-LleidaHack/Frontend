@@ -1,15 +1,17 @@
-<!-- game.component.html -->
 <div class="header">
-    <img src="../assets/logo_blanc.png" alt="Logo de Chain Reaction">
+  <div class="logo-container">
+    <h1>
+      {{ isWinner ? 'Victoria' : (isEliminated ? 'GAME OVER' : 'Víctima') }}
+    </h1>
   </div>
-  
+</div>
+
+
   <div class="game-container">
     <div class="target-player">
       <div *ngIf="isEliminated; else gamePlay">
-        <div class="image-container">
-          <img [src]="targetPlayer.image" alt="Foto del jugador objetivo" class="player-photo">
-          <div class="overlay"><i class="fa fa-times" aria-hidden="true"></i></div>
-        </div>
+        <img [src]="targetPlayer.image" alt="Foto del jugador objetivo" class="player-photo" [ngClass]="{'bw-filter': isEliminated && !isWinner}">
+        <h2>{{ targetPlayer.name }}</h2>
       </div>
       <ng-template #gamePlay>
         <div *ngIf="targetPlayer?.image; else loading">
@@ -22,18 +24,32 @@
       </ng-template>
     </div>
   
-  
+    <div class="players-info">
+      <p>Has eliminat a {{ numKills }} jugadors</p>
+    </div>
     <div class="game-info">
-      <p>Jugadors vius: {{ remainingPlayers }}</p>
+      <p>Jugadors vius: {{ remainingPlayers }} / {{ totalUsers }}</p>
     </div>
 
-    <div *ngIf="!isEliminated; else returnHome" class="action-button">
-      <button mat-raised-button color="warn" (click)="reportElimination()">M'han eliminat</button>
-    </div>
+    <button *ngIf="!isEliminated && !isWinner; else returnHome" (click)="reportElimination()" class="mat-card-button submit-button">
+      <mat-card>
+        <mat-card-content>
+          <div class="header-content">
+            <h2>M'han eliminat</h2>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </button>
     <ng-template #returnHome>
-      <div class="action-button">
-        <button mat-raised-button color="primary" (click)="goHome()">Abandonar partida</button>
-      </div>
+      <button class="mat-card-button submit-button waiting" (click)="goHome()" >
+        <mat-card>
+          <mat-card-content>
+            <div class="header-content">
+              <h2>Abandonar partida</h2>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </button>
     </ng-template>
     
 

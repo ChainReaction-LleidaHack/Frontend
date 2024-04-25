@@ -16,6 +16,11 @@ export class GameComponent {
   remainingPlayers: any = "";
   playerData: any = {};
   isWinner: boolean = false;
+  totalUsers: any = "";
+  numKills: any = 0;
+  winnerKills: any = 0;
+  private refreshInterval: any;
+
 
   constructor(private router: Router, private sessionService: SessionService) {
   }
@@ -32,20 +37,37 @@ export class GameComponent {
       }
     }
     this.refreshGame();
-    setInterval(() => {
+    this.refreshInterval = setInterval(() => {
       this.refreshGame();
     }, 5000);
+  }
+
+  ngOnDestroy() {
+    if (this.refreshInterval) {
+      clearInterval(this.refreshInterval);
+    }
   }
 
   refreshGame() {
     this.sessionService.refreshParty(this.playerId).subscribe({
       next: (response) => {
-        this.targetPlayer = response.target;
-        this.remainingPlayers = response.remaining_users;
         if(response.winner){
+          console.log('Winner:', response.winner);
           this.isWinner = true;
           this.playerData = response.winner;
+          this.targetPlayer = response.winner;
+          this.winnerKills = response.winner.num_killed;
+        } else {
+          if(!this.isEliminated) {
+            this.targetPlayer = response.target;
+          } else {
+            this.targetPlayer = this.playerData;
+          }
+          
         }
+        this.remainingPlayers = response.remaining_users;
+        this.totalUsers = response.total_users;
+        this.numKills = response.num_killed;
       },
       error: (error) => {
         console.error('Error refreshing game:', error);
@@ -59,7 +81,10 @@ export class GameComponent {
         this.isEliminated = true;
         console.log('Player eliminated:', response);
         localStorage.setItem('gameState', JSON.stringify({
+          playerData : this.playerData,
           isEliminated : this.isEliminated,
+          partyCode : this.partyCode,
+
         }));
       },
       error: (error) => {
@@ -70,7 +95,9 @@ export class GameComponent {
   }
 
   goHome() {
-    this.router.navigate(['/home']);
     localStorage.removeItem('gameState');
+    clearInterval(this.refreshInterval); // Detiene el intervalo
+    this.router.navigate(['/home']);
   }
+
 }
