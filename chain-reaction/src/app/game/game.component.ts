@@ -95,8 +95,8 @@ export class GameComponent {
   }
 
   goHome() {
-    localStorage.removeItem('gameState');
     clearInterval(this.refreshInterval); // Detiene el intervalo
+    localStorage.removeItem('gameState');
     this.router.navigate(['/home']);
   }
 
