@@ -1,57 +1,102 @@
+/* instructions.component.scss */
 .instructions-container {
-    position: relative;
-    width: 100%;
-    height: 100vh; // Asegura que la vista ocupa toda la altura de la pantalla
-    overflow: hidden; // Esconde cualquier contenido que exceda el tamaño del contenedor
-  
-    mat-card {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      display: none; // Oculta todas las tarjetas inicialmente
-      background-color: #070707; // Fondo negro para las tarjetas
-      color: white; // Texto blanco para mejor contraste
-      text-align: center; // Centra el texto
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-  
-      &.active {
-        display: flex; // Muestra la tarjeta activa
-      }
-    }
-  
-    .centered-image {
-      max-width: 80%; // Limita el tamaño máximo de la imagen
-      height: auto; // Mantiene la proporción de la imagen
-      margin: 20px 0; // Espacio arriba y abajo de la imagen
-    }
-  
-    .nav-button {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 100; // Asegura que los botones están sobre las tarjetas
-      color: orange; // Color naranja para las flechas
-  
-      &.left {
-        left: 10px;
-      }
-  
-      &.right {
-        right: 10px;
-      }
-    }
-  
-    .home-button {
-      position: absolute;
-      bottom: 20px; // Posiciona el botón en la parte inferior
-      left: 50%;
-      transform: translateX(-50%); // Centra el botón horizontalmente
-      z-index: 100; // Asegura que el botón está sobre las tarjetas
-    }
-  }
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  padding: 5px;
+}
+
+.instruction-card {
+  width: 90%;
+  max-width: 600px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column; /* Cambio para organizar el contenido verticalmente */
+  align-items: center; /* Alineación central para el encabezado y el cuerpo de la tarjeta */
+}
+
+.card-body {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.text-content {
+  width: 80%; /* Ocupa el 60% del espacio disponible */
+}
+
+.image-content {
+  width: 20%; /* Ocupa el 40% del espacio disponible */
+  display: flex;
+  justify-content: flex-end; /* Alinea la imagen al final (derecha) */
+}
+
+.instruction-image {
+  height: auto; /* Mantiene la proporción de la imagen */
+  margin: 20px; /* Espacio alrededor de la imagen */
+  width: 300px;
+  width: 40x; /* Tamaño del ícono */
+  height: 40px; /* Tamaño del ícono */
+  fill: #f7f7f7;
+  filter: brightness(0) invert(1);
+}
+
+.home-button {
+  margin-top: 20px;
+}
+
+h2 {
+  margin: 0; /* Elimina el margen predeterminado para alinear mejor */
+  flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+  color: #f7f7f7;
+  margin-left: 8px;
+}
+
+
+.header {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin-top: 32px; /* Elimina cualquier margen predeterminado */
+  padding: 0; /* Elimina cualquier padding predeterminado */
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0; /* Elimina márgenes predeterminados para un ajuste fino */
+  padding: 0; /* Elimina paddings para un control total */
+  line-height: 1.2; /* Controla el espaciado entre 'Chain' y 'Reaction' */
+  font-size: 2rem; /* Tamaño del texto, ajustable según necesidades */
+  font-weight: bold;
+}
+
+.mat-card-button {
+  width: 100%; /* Ocupa todo el ancho posible */
+  border: none; /* Sin bordes para que parezca una tarjeta, no un botón */
+  background: none; /* Fondo transparente */
+  padding: 0; /* Sin padding adicional */
+  display: block; /* Hace que el botón sea un bloque, similar a una tarjeta */
+  text-align: left; /* Alinea el texto a la izquierda para estética de tarjeta */
+  cursor: pointer; /* Cambia el cursor para indicar que es clickable */
+}
+
+.mat-card-button:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Sombra para efecto al pasar el mouse */
+}
+
+
+mat-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
+  //color
+  background: #1a1a1a;
+  //borde de color gris
+  border: 2px solid #ff7430;
+}
+
+.submit-button {
+  width: 65%;
+  justify-content: center ;
+  align-items: center;
+}

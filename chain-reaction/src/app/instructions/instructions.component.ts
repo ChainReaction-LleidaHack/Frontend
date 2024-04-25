@@ -1,3 +1,4 @@
+// instructions.component.ts
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -8,35 +9,31 @@ import { Router } from '@angular/router';
 })
 export class InstructionsComponent {
   constructor(private router: Router) { }
-  currentIndex = 0;
+
   instructions = [
     {
-      title: 'Paso 1',
-      text: 'Descripción del primer paso del juego.',
-      image: 'path_to_image1.jpg'
+      title: 'Pas 1',
+      text: 'Reuneix al teu grup d\'amics. Crea o uneix-te a una partida.',
+      image: 'assets/icons/pas1.svg'
     },
     {
-      title: 'Paso 2',
-      text: 'Descripción del segundo paso del juego.',
-      image: 'path_to_image2.jpg'
+      title: 'Pas 2',
+      text: 'Fica el teu nom. Somriu i fes-te una foto.',
+      image: 'assets/icons/pas2.svg'
     },
     {
-      title: 'Paso 3',
-      text: 'Descripción del tercer paso del juego.',
-      image: 'path_to_image3.jpg'
+      title: 'Pas 3',
+      text: 'Entre tots, decidiu el mètode per acabar amb els jugadors. Exemple: Picar l\'ullet.',
+      image: 'assets/icons/pas3.svg'
+    },
+    {
+      title: 'Pas 4',
+      text: 'Si t\'han assassinat, prem el botó "He mort" :(',
+      image: 'assets/icons/pas4.svg'
     }
   ];
 
-  navigate(direction: string): void {
-    if (direction === 'next') {
-      this.currentIndex = Math.min(this.currentIndex + 1, this.instructions.length - 1);
-    } else if (direction === 'prev') {
-      this.currentIndex = Math.max(this.currentIndex - 1, 0);
-    }
-  }
-
-  goHome(){
+  goHome() {
     this.router.navigate(['/home']);
   }
-
 }

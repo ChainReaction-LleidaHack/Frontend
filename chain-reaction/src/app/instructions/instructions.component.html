@@ -1,24 +1,35 @@
-<div class="instructions-container">
+<!-- instructions.component.html -->
+<div class="header">
+  <div class="logo-container">
+      <!-- If isCreator que ponga crear partida, sinó que ponga unirse partida -->
+      <h1>Com jugar?</h1>
+  </div>
+</div>
 
-    <mat-card *ngFor="let instruction of instructions; let i = index" [class.active]="currentIndex === i">
-      <mat-card-header>
-        <mat-card-title>{{ instruction.title }}</mat-card-title>
-      </mat-card-header>
-      <img mat-card-image [src]="instruction.image" alt="Image of instruction step" class="centered-image">
+<!-- instructions.component.html -->
+<div class="instructions-container">
+  <mat-card *ngFor="let instruction of instructions" class="instruction-card">
+    <mat-card-header>
+      <mat-card-title>{{ instruction.title }}</mat-card-title>
+    </mat-card-header>
+    <div class="card-body">
+      <div class="text-content">
+        <mat-card-content>
+          <p>{{ instruction.text }}</p>
+        </mat-card-content>
+      </div>
+      <div class="image-content">
+        <img mat-card-image [src]="instruction.image" alt="{{ instruction.title }}" class="instruction-image">
+      </div>
+    </div>
+  </mat-card>
+  <button (click)="goHome()" class="mat-card-button submit-button">
+    <mat-card>
       <mat-card-content>
-        <p>{{ instruction.text }}</p>
+        <div class="header-content">
+          <h2> Torna a l'inici</h2>
+        </div>
       </mat-card-content>
     </mat-card>
-  
-    <button mat-icon-button (click)="navigate('prev')" [disabled]="currentIndex === 0" class="nav-button left">
-      <mat-icon>arrow_back</mat-icon>
-    </button>
-  
-    <button mat-icon-button (click)="navigate('next')" [disabled]="currentIndex === instructions.length - 1" class="nav-button right">
-      <mat-icon>arrow_forward</mat-icon>
-    </button>
-  
-    <button mat-stroked-button color="primary" (click)="goHome()" class="home-button">Tornar a l'inici</button>
-  
-  </div>
-  
+  </button></div>
+
