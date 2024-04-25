@@ -71,7 +71,7 @@ export class LobbyComponent implements OnInit {
           this.players = response.users;
           this.ref.detectChanges(); 
         
-        } else {
+        } else if (response.target) {
           this.router.navigate(['/game']);
         }
       },
