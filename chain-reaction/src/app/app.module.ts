@@ -11,6 +11,7 @@ import { HomeComponent } from './home/home.component';
 import { LobbyComponent } from './lobby/lobby.component';
 import { GameComponent } from './game/game.component';
 import { InstructionsComponent } from './instructions/instructions.component';
+import { PlayerListPopupComponent } from './player-list-popup/player-list-popup.component';
 
 
 // Angular Material
@@ -29,7 +30,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
     HomeComponent,
     LobbyComponent,
     GameComponent,
-    InstructionsComponent
+    InstructionsComponent,
+    PlayerListPopupComponent
   ],
   imports: [
     BrowserModule,
