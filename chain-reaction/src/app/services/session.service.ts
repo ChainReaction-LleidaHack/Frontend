@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 
 export class SessionService {
-  private apiUrl = 'https://chainapi.lleidahack.dev';
+  private apiUrl = 'http://localhost:8000';
 
   constructor(private http: HttpClient) { }
 
@@ -35,4 +35,12 @@ export class SessionService {
   exist(code: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/party/${code}/exist`);
   }
+
+  remove(player_id: any, data:any): Observable<any> {
+    return this.http.delete<any>(`${this.apiUrl}/party/${player_id}`, {body: data});
+  }
+
+  remaining(code: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/party/${code}/remaining`);
+  }  
 }

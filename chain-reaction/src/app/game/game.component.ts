@@ -1,7 +1,8 @@
 // game.component.ts
-import { Component } from '@angular/core';
+import { Component, ViewChild  } from '@angular/core';
 import { Router } from '@angular/router';
 import { SessionService } from '../services/session.service';
+import { PlayerListPopupComponent } from '../player-list-popup/player-list-popup.component';
 
 
 @Component({
@@ -20,11 +21,14 @@ export class GameComponent {
   totalUsers: any = "";
   numKills: any = 0;
   winnerKills: any = 0;
+  playerListVisible: boolean = false;
   private refreshInterval: any;
 
 
   constructor(private router: Router, private sessionService: SessionService) {
   }
+  @ViewChild('popup') popupComponent!: PlayerListPopupComponent;
+
 
   ngOnInit() {
     const gameState = localStorage.getItem('gameState');
@@ -94,6 +98,13 @@ export class GameComponent {
       }
     });
     this.targetPlayer = this.playerData;
+  }
+
+  showPlayerList(){
+    this.playerListVisible = true;
+    if (this.popupComponent) {
+      this.popupComponent.refreshPlayers(); // Call the function inside the popup
+    }
   }
 
   goHome() {
