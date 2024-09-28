@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 
 
 export class SessionService {
-  private apiUrl = 'http://localhost:8000';
+  private apiUrl = 'https://chainapi.lleidahack.dev';
 
   constructor(private http: HttpClient) { }
 

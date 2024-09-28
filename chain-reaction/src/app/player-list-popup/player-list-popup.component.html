@@ -1,21 +1,15 @@
 <div class="popup-overlay">
     <div class="popup-content">
-      <button class="close-button" (click)="close()">X</button>
+      <button class="close-button" (click)="close()">x</button>
       <ng-content></ng-content> <!-- This allows you to insert custom content inside the popup -->
       <div class="player-list">
         <ul>
           <li *ngFor="let player of players">
             <img [src]="player.image" alt="Foto de usuario" class="player-image">
             {{ player.name }}
-            <button *ngIf="isCreator" (click)="remove_player(player.id)" class="mat-card-button submit-button">
-                <mat-card>
-                  <mat-card-content>
-                    <div class="header-content">
-                      <h2>Començar partida</h2>
-                    </div>
-                  </mat-card-content>
-                </mat-card>
-              </button>
+            <button *ngIf="isCreator" (click)="remove_player(player.id)" class="mat-card-button submit-button remove-button">
+              x
+            </button>
           </li>
         </ul>
       </div>

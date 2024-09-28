@@ -1,142 +1,148 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden; /* Evita que la página principal sea scrolleable */
+}
+
+.scroll {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Hace que el contenedor ocupe toda la ventana */
+  overflow: hidden; /* Asegura que no haya scroll en la página */
+}
+
 .header img {
-    width: 90%; /* Ajusta esto según las dimensiones deseadas para tu logo */
-    margin: 40px 20px 0px 20px; /* Ajusta esto según la posición deseada */
-    display: block;
-    align-items: center;
-    flex-shrink: 0; /* No permite que el encabezado se reduzca */
-  
-  }
-  
-  .lobby-content {
-    display: flex;
-    flex-direction: column;
-    height: 100vh; /* Ajusta según la altura de tu header y otros elementos */
-    padding: 30px;
-    text-align: center; 
-    box-sizing: border-box; /* Incluye el padding en la altura */
-  }
-  
-  .game-code {
-    font-size: 40px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    width: 90%;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    flex-shrink: 0; /* Asegura que estos elementos no se reduzcan */
-    color: #ff7430;
-  }
-  
-  .player-list {
-    overflow-y: auto; /* Habilita el desplazamiento vertical */
-    flex-grow: 1; /* Toma todo el espacio disponible, pero deja espacio para otros elementos */
-    margin-bottom: 20px; /* Espacio antes del botón */
-    color: #fff    ;
-    font-size: 20px;
-    max-height: calc(100vh - 400px); /* Ajusta este valor basado en la altura del header y del footer */
-  }
-  
-  .player-list ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    overflow-y: auto; /* Habilita el desplazamiento vertical */
-    flex-grow: 1; /* Permite que tome el espacio vertical restante */
-    margin-bottom: 20px; /* Espacio antes del botón */
-  }
-  
-  .player-list li {
-    padding: 15px 10px;
-    background-color: #1a1a1a;
-    margin: 8px;
-    display: flex;
-    align-items: center;
-    border: 2px solid #ff7430;
-  }
-  
-  .player-image {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    margin-right: 20px;
-  }
-  
-  .start-button-container {
-    width: 100%;
-    flex-shrink: 0; /* Asegura que estos elementos no se reduzcan */
-  }
-  .start-button {
-    position: fixed;
-    bottom: 10px;
-    left: 0;
-    right: 0;
-    width: calc(100% - 40px);
-    margin: 0 20px; /* Margen horizontal */
-    font-size: 18px;
-  }
+  width: 90%; /* Ajusta esto según las dimensiones deseadas para tu logo */
+  margin: 40px 20px 0px 20px; /* Ajusta esto según la posición deseada */
+  display: block;
+  align-items: center;
+  flex-shrink: 0; /* No permite que el encabezado se reduzca */  
+}
 
-  button:disabled {
-    background-color: #ccc;  /* Color de fondo para botones deshabilitados */
-    color: #666;             /* Color del texto para botones deshabilitados */
-    cursor: not-allowed;     /* Cambia el cursor para indicar que el botón está deshabilitado */
-  }
-  .header {
-    display: flex;
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    margin-top: 32px; /* Elimina cualquier margen predeterminado */
-    padding: 0; /* Elimina cualquier padding predeterminado */
-    margin-bottom: 12px;
-  }
+.lobby-content {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Toma todo el espacio vertical disponible */
+  padding: 30px;
+  text-align: center;
+  box-sizing: border-box; /* Incluye el padding en la altura */
+  overflow: hidden; /* Asegura que no haya scroll en la parte principal */
+}
 
-  h1 {
-    margin: 0; /* Elimina márgenes predeterminados para un ajuste fino */
-    padding: 0; /* Elimina paddings para un control total */
-    line-height: 1.2; /* Controla el espaciado entre 'Chain' y 'Reaction' */
-    font-size: 2rem; /* Tamaño del texto, ajustable según necesidades */
-    font-weight: bold;
-  }
-  .mat-card-button {
-    width: 100%; /* Ocupa todo el ancho posible */
-    border: none; /* Sin bordes para que parezca una tarjeta, no un botón */
-    background: none; /* Fondo transparente */
-    padding: 0; /* Sin padding adicional */
-    display: block; /* Hace que el botón sea un bloque, similar a una tarjeta */
-    text-align: left; /* Alinea el texto a la izquierda para estética de tarjeta */
-    cursor: pointer; /* Cambia el cursor para indicar que es clickable */
-  }
-  
-  mat-card {
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
-    //color
-    background: #1a1a1a;
-    //borde de color gris
-    border: 2px solid #ff7430;
-    align-items: center;
-    justify-content: center;
-    max-width: 500px; /* Ajusta este valor según tus necesidades */
-    margin-top: 20px;
-  }
-  
-  .submit-button {
-    position: fixed;
-    bottom: 40px;
-    width: 85%;
-  }
+.game-code {
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  width: 90%;
+  margin: 0 auto;
+  flex-shrink: 0; /* Asegura que estos elementos no se reduzcan */
+  color: #f7f7f7;
+}
 
-  h2 {
-    margin: 0; /* Elimina el margen predeterminado para alinear mejor */
-    flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
-    color: #f7f7f7;
-  }
+.player-list {
+  overflow-y: auto; /* Habilita el desplazamiento vertical solo aquí */
+  flex-grow: 1; /* Toma todo el espacio disponible */
+  margin-bottom: 20px; /* Espacio antes del botón */
+  color: #fff;
+  font-size: 20px;
+  max-height: calc(100vh - 400px); /* Ajusta este valor según la altura necesaria */
+}
 
+.player-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
-  .waiting{
-    opacity: 0.5; /* Reduce la opacidad para dar una apariencia "apagada" */
-    box-shadow: none; /* Elimina cualquier sombra para aplanar el botón */
-    cursor: not-allowed; /* Cambia el cursor para indicar que el botón no es interactivo */
-  }
-  
-  
+.player-list li {
+  padding: 15px 10px;
+  background-color: #01643e;
+  margin: 8px;
+  display: flex;
+  align-items: center;
+  border: 2px solid #f7f7f7;
+}
 
-  
+.player-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 20px;
+}
+
+.start-button-container {
+  width: 100%;
+  flex-shrink: 0; /* Asegura que estos elementos no se reduzcan */
+}
+
+.start-button {
+  position: fixed;
+  bottom: 10px;
+  left: 0;
+  right: 0;
+  width: calc(100% - 40px);
+  margin: 0 20px; /* Margen horizontal */
+  font-size: 18px;
+}
+
+button:disabled {
+  background-color: #ccc;  /* Color de fondo para botones deshabilitados */
+  color: #666;             /* Color del texto para botones deshabilitados */
+  cursor: not-allowed;     /* Cambia el cursor para indicar que el botón está deshabilitado */
+}
+
+.header {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin-top: 64px; /* Elimina cualquier margen predeterminado */
+  padding: 0; /* Elimina cualquier padding predeterminado */
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0; /* Elimina márgenes predeterminados para un ajuste fino */
+  padding: 0; /* Elimina paddings para un control total */
+  line-height: 1.2; /* Controla el espaciado entre 'Chain' y 'Reaction' */
+  font-size: 2rem; /* Tamaño del texto, ajustable según necesidades */
+  font-weight: bold;
+}
+
+.mat-card-button {
+  width: 100%; /* Ocupa todo el ancho posible */
+  border: none; /* Sin bordes para que parezca una tarjeta, no un botón */
+  background: none; /* Fondo transparente */
+  padding: 0; /* Sin padding adicional */
+  display: block; /* Hace que el botón sea un bloque, similar a una tarjeta */
+  text-align: left; /* Alinea el texto a la izquierda para estética de tarjeta */
+  cursor: pointer; /* Cambia el cursor para indicar que es clickable */
+}
+
+mat-card {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
+  background: #01643e; /* Color de fondo de la tarjeta */
+  border: 2px solid #f7f7f7; /* Borde de color gris */
+  align-items: center;
+  justify-content: center;
+  max-width: 500px; /* Ajusta este valor según tus necesidades */
+  margin-top: 20px;
+}
+
+.submit-button {
+  position: fixed;
+  bottom: 40px;
+  width: 85%;
+}
+
+h2 {
+  margin: 0; /* Elimina el margen predeterminado para alinear mejor */
+  flex-grow: 1; /* Permite que el texto ocupe el espacio disponible */
+  color: #f7f7f7;
+}
+
+.waiting {
+  opacity: 0.5; /* Reduce la opacidad para dar una apariencia "apagada" */
+  box-shadow: none; /* Elimina cualquier sombra para aplanar el botón */
+  cursor: not-allowed; /* Cambia el cursor para indicar que el botón no es interactivo */
+}

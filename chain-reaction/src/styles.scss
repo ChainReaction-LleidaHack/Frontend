@@ -8,7 +8,7 @@ $custom-orange: (
   200: #ff995f,
   300: #ff7324,
   400: #ff5c00,
-  500: #FF7430, // Color personalizado principal
+  500: #f7f7f7, // Color personalizado principal
   600: #cc4700,
   700: #b33d00,
   800: #993300,
@@ -43,7 +43,7 @@ $accent-palette: mat.define-palette(mat.$grey-palette, 300, 100, 900); // Color 
 $warn-palette: mat.define-palette(mat.$red-palette); // Color de advertencia como rojo
 
 // Configura el tema general
-$app-theme: mat.define-dark-theme(
+$app-theme: mat.define-light-theme(
   (
     color: (
       primary: $primary-palette,
@@ -81,7 +81,11 @@ $app-theme: mat.define-dark-theme(
 }
 
 body {
-  background-color: #0f0f0f; 
+  background-color: #0e3a29; // Color de fondo principal
+  background-image: url('/assets/icons/fulles_lianes.svg'); // Ruta a tu imagen
+  background-repeat: no-repeat; // Evita que la imagen se repita
+  background-position: top center; // Posiciona la imagen en la parte superior centrada
+  background-size: contain; // Ajusta la imagen para que se contenga en el ancho
   color: #f7f7f7; 
   margin: 0;
   padding: 0;

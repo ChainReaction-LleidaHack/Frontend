@@ -11,7 +11,7 @@
   display: flex;
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
-  margin-top: 32px; /* Elimina cualquier margen predeterminado */
+  margin-top: 64px; /* Elimina cualquier margen predeterminado */
   padding: 0; /* Elimina cualquier padding predeterminado */
   margin-bottom: 12px;
 }
@@ -59,7 +59,7 @@ h1 {
   text-align: center;
   position: fixed;
   bottom: 120px;
-  color:#ff7430;
+  color:#f7f7f7;
   left: 0;
   right: 0;
 }
@@ -120,9 +120,9 @@ h1 {
 .mat-card-count {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
   //color
-  background: #1a1a1a;
+  background: #01643e;
   //borde de color gris
-  border: 2px solid #ff7430;
+  border: 2px solid #f7f7f7;
   align-items: center;
   justify-content: center;
   max-width: 500px; /* Ajusta este valor según tus necesidades */
@@ -144,9 +144,9 @@ h1 {
 mat-card {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
   //color
-  background: #1a1a1a;
+  background: #01643e;
   //borde de color gris
-  border: 2px solid #ff7430;
+  border: 2px solid #f7f7f7;
   align-items: center;
   justify-content: center;
   max-width: 500px; /* Ajusta este valor según tus necesidades */
