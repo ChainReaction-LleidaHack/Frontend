@@ -6,6 +6,11 @@
   </div>
 </div>
 
+<app-player-list-popup *ngIf="playerListVisible" (closePopup)="playerListVisible = false">
+  <!-- Content inside the popup can be customized -->
+  <!-- <h1>Full-Screen Pop-up</h1>
+  <p>This is a full-screen pop-up component.</p> -->
+</app-player-list-popup>
 
   <div class="game-container">
     <div class="target-player">
@@ -28,7 +33,9 @@
       <p>Has eliminat a {{ numKills }} jugadors</p>
     </div>
     <div class="game-info">
-      <p>Jugadors vius: {{ remainingPlayers }} / {{ totalUsers }}</p>
+      <p>Jugadors vius: 
+        <button class="mat-card-count" (click)="showPlayerList()">{{ remainingPlayers }} / {{ totalUsers }}</button>
+      </p>
     </div>
 
     <button *ngIf="!isEliminated && !isWinner; else returnHome" (click)="reportElimination()" class="mat-card-button submit-button">

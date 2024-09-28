@@ -117,7 +117,18 @@ h1 {
   max-width: 100%;          /* Previene que la imagen exceda el ancho del contenedor */
 }
 
-
+.mat-card-count {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
+  //color
+  background: #1a1a1a;
+  //borde de color gris
+  border: 2px solid #ff7430;
+  align-items: center;
+  justify-content: center;
+  max-width: 500px; /* Ajusta este valor según tus necesidades */
+  margin-top: 20px;
+  color: white;
+}
 
 
 .mat-card-button {
