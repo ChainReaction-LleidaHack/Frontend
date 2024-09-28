@@ -13,6 +13,10 @@ export class HomeComponent {
 
   constructor(private router: Router, private sessionService: SessionService) { }
 
+  ngOnInit() {
+    this.deleteGameState();
+  }
+
   crearPartida() {
     this.isCreator = true;
     this.saveGameState();
@@ -42,6 +46,10 @@ export class HomeComponent {
       partyCode: this.partyCode,
       isCreator: this.isCreator,
     }));
+  }
+
+  private deleteGameState() {
+    localStorage.removeItem('gameState');
   }
 
   instructions() {

@@ -2,9 +2,7 @@
   display: flex;
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
-  margin-top: 32px; /* Elimina cualquier margen predeterminado */
   padding: 0; /* Elimina cualquier padding predeterminado */
-  margin-bottom: 64px;
 }
 
 .logo-container {
@@ -13,9 +11,8 @@
 }
 
 .logo {
-  width: 120px; /* Tamaño del logo, ajustable según necesidades */
+  width: 250px; /* Tamaño del logo, ajustable según necesidades */
   height: auto; /* Mantiene la proporción del logo */
-  margin-right: 8px; /* Espacio entre el logo y el texto */
 }
 
 .title-container {
@@ -36,11 +33,11 @@ h1 {
   max-width: 600px; /* Ajusta este valor según tus necesidades */
   margin-top: 20px;
 }
+
 .join-game {
   width: 90%;
   max-width: 600px; /* Ajusta este valor según tus necesidades */
   margin-top: 20px;
-  margin-bottom: 48px;
 }
 
 .create-game {
@@ -115,8 +112,42 @@ button[mat-icon-button] {
 mat-card {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
   //color
-  background: #1a1a1a;
+  background: #01643e;
   //borde de color gris
-  border: 2px solid #ff7430;
+  border: 2px solid #f7f7f7;
 }
+
+
+.join-container {
+  display: flex;
+  align-items: center; /* Alinea verticalmente el input y el botón */
+  justify-content: space-between; /* Distribuye los elementos de manera equitativa */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+}
+
+.join-input {
+  flex-grow: 1; /* Hace que el input ocupe el espacio restante */
+  margin-right: 10px; /* Añade espacio entre el input y el botón */
+}
+
+.join-button {
+  display: flex;
+  border: none; /* Elimina cualquier borde predeterminado */
+  background: none;
+  cursor: pointer;
+  padding: 0; /* Elimina el padding adicional */
+}
+
+.button-icon {
+  width: 50px; /* Tamaño del ícono */
+  height: 50px; /* Tamaño del ícono */
+  fill: #f7f7f7;
+  filter: brightness(0) invert(1);
+  align-items: center;
+  justify-content: center;
+
+}
+
+
+
 

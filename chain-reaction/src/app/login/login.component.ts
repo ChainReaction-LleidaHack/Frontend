@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   gameState: any;
 
   isCreator: boolean = false;
+  isLoading: boolean = false;
 
   constructor(private router: Router, private sessionService: SessionService) {}
 
@@ -31,7 +32,12 @@ export class LoginComponent implements OnInit {
   }
 
   startGame() {
+    if (this.isLoading) {
+      return; // Si ya está en curso una solicitud, no hagas nada
+    }
+
     if (this.playerName && this.playerImage && this.gameState) {
+      this.isLoading = true; // Indica que la solicitud está en curso
       if (this.gameState.isCreator) {
         this.createGame();
       } else {
@@ -109,38 +115,28 @@ export class LoginComponent implements OnInit {
         img.src = e.target.result as string;
         img.onload = () => {
           const pica = Pica();
-
+  
           const canvasSource = document.createElement('canvas');
-          canvasSource.width = img.width;
-          canvasSource.height = img.height;
+          const size = Math.min(img.width, img.height); // Tomamos el lado más pequeño para hacer la imagen cuadrada
+          canvasSource.width = size;
+          canvasSource.height = size;
+  
           const ctx = canvasSource.getContext('2d');
           if (!ctx) {
             console.error('Error creating canvas context');
             return;
           }
-          ctx.drawImage(img, 0, 0);
-
+  
+          // Recortar la imagen centrada para que sea cuadrada
+          const offsetX = (img.width - size) / 2;
+          const offsetY = (img.height - size) / 2;
+          ctx.drawImage(img, offsetX, offsetY, size, size, 0, 0, size, size);
+  
           const canvasDest = document.createElement('canvas');
-          const maxW = 800; 
-          const maxH = 600; 
-          let width = img.width;
-          let height = img.height;
-
-          if (width > height) {
-            if (width > maxW) {
-              height *= maxW / width;
-              width = maxW;
-            }
-          } else {
-            if (height > maxH) {
-              width *= maxH / height;
-              height = maxH;
-            }
-          }
-
-          canvasDest.width = width;
-          canvasDest.height = height;
-
+          const newSize = 400; // Tamaño final cuadrado de la imagen
+          canvasDest.width = newSize;
+          canvasDest.height = newSize;
+  
           pica.resize(canvasSource, canvasDest, {
             unsharpAmount: 80,
             unsharpRadius: 0.6,
@@ -161,5 +157,5 @@ export class LoginComponent implements OnInit {
       };
       reader.readAsDataURL(file);
     }
-  }
+  }  
 }

@@ -19,7 +19,7 @@
           <div class="header-content">
             <h2>Introdueix el teu nom</h2>
           </div>
-          <mat-form-field appearance="fill">
+          <mat-form-field appearance="fill" style="width: 100%;">
             <mat-label>Nom</mat-label>
             <input matInput [(ngModel)]="playerName" name="playerName" required>
           </mat-form-field>
@@ -39,12 +39,13 @@
       <img [src]="playerImage" alt="Previsualización de tu foto" class="player-image-preview">
     </div>
     
-
-    <button type="submit" class="mat-card-button submit-button">
+    <!-- Deshabilitar el botón si isLoading es true -->
+    <button type="submit" class="mat-card-button submit-button" [disabled]="isLoading">
       <mat-card>
         <mat-card-content>
           <div class="header-content">
-            <h2>Entrar</h2>
+            <h2 *ngIf="!isLoading; else loadingText">Entrar</h2>
+            <ng-template #loadingText><h2>Espera...</h2></ng-template>
           </div>
         </mat-card-content>
       </mat-card>

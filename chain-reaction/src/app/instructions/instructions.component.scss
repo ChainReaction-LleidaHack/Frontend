@@ -59,7 +59,7 @@ h2 {
   display: flex;
   justify-content: center; /* Centra horizontalmente */
   align-items: center; /* Centra verticalmente */
-  margin-top: 32px; /* Elimina cualquier margen predeterminado */
+  margin-top: 64px; /* Elimina cualquier margen predeterminado */
   padding: 0; /* Elimina cualquier padding predeterminado */
   margin-bottom: 12px;
 }
@@ -90,9 +90,9 @@ h1 {
 mat-card {
   box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sombra sutil para dar profundidad */
   //color
-  background: #1a1a1a;
+  background: #01643e;
   //borde de color gris
-  border: 2px solid #ff7430;
+  border: 2px solid #f7f7f7;
 }
 
 .submit-button {
